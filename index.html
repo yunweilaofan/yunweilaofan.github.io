@@ -15,7 +15,7 @@
             overflow: hidden;
         }
 
-        .container {
+      .container {
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -65,6 +65,29 @@
                 transform: scale(0);
             }
         }
+
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .music-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -73,6 +96,14 @@
     <div class="container">
         <a href="about.html" class="about-btn" id="floatingBtn">来点我</a>
     </div>
+
+    <audio id="bgMusic" loop>
+        <source src="./mp3/814703912.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        您的浏览器不支持 audio 元素。
+    </audio>
+
+    <button class="music-control" id="musicToggle">🎵</button>
 
     <script src="script.js"></script>
     <script>
@@ -118,6 +149,74 @@
                 star.remove();
             }, 1000);
         });
+
+        // 修改音乐控制功能
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        let isMusicPlaying = false;
+
+        // 检查音频元素是否被正确创建
+        if (bgMusic) {
+            console.log('音频元素已创建');
+        } else {
+            console.error('音频元素创建失败');
+        }
+
+        // 尝试自动播放
+        function playAudio() {
+            bgMusic.play().then(() => {
+                isMusicPlaying = true;
+                musicToggle.textContent = '🔇';
+                console.log('音乐开始播放');
+            }).catch(error => {
+                console.error('自动播放失败:', error);
+                // 如果自动播放失败，我们可以提示用户点击页面来开始播放
+                document.body.addEventListener('click', playAudio, { once: true });
+            });
+        }
+
+        window.addEventListener('load', () => {
+            if (bgMusic.canPlayType && bgMusic.canPlayType('audio/mpeg;').replace(/no/, '')) {
+                console.log('浏览器支持 MP3 格式');
+                playAudio();
+            } else {
+                console.error('浏览器不支持 MP3 格式');
+            }
+        });
+
+        musicToggle.addEventListener('click', () => {
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                musicToggle.textContent = '🎵';
+                console.log('音乐已暂停');
+            } else {
+                playAudio();
+            }
+            isMusicPlaying = !isMusicPlaying;
+        });
+
+        // 添加音频加载事件监听器
+        bgMusic.addEventListener('canplaythrough', () => {
+            console.log('音频文件已加载完成，可以播放');
+        });
+
+        bgMusic.addEventListener('error', (e) => {
+            console.error('音频加载错误:', e);
+            if (e.target.error.code === e.target.error.MEDIA_ERR_SRC_NOT_SUPPORTED) {
+                console.error('音频源不受支持');
+            }
+        });
+
+        // 检查音频当前状态
+        setInterval(() => {
+            console.log('音频当前时间:', bgMusic.currentTime);
+            console.log('音频就绪状态:', bgMusic.readyState);
+            console.log('音频网络状态:', bgMusic.networkState);
+        }, 5000);
+
+        // 添加用户交互检测
+        document.body.addEventListener('mousemove', playAudio, { once: true });
+        document.body.addEventListener('touchstart', playAudio, { once: true });
     </script>
 </body>
 </html>

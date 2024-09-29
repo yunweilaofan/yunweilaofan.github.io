@@ -12,10 +12,11 @@
             font-family: 'Arial', sans-serif;
             color: #fff;
             background-color: #000;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -25,31 +26,53 @@
             top: 0;
             left: 0;
             right: 0;
-            background-color: #000; /* 取消透明度 */
-            padding: 10px 0;
+            background-color: #f4f4f4;
+            padding: 15px 0;
             z-index: 1000;
         }
 
         nav .container {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
+            gap: 30px;
+            padding: 0;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         nav a {
-            color: #fff;
+            color: #000;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            padding: 10px 0;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 80px; 
+            gap: 40px;
+            padding-top: 60px; 
+        }
+
+        .left-content {
+            width: 65%;
         }
 
         .profile {
             display: flex;
             align-items: center;
-            margin-top: 100px;
             background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            border-radius: 15px;
             padding: 30px;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
         }
 
         .profile-image {
@@ -58,84 +81,156 @@
             border-radius: 50%;
             object-fit: cover;
             margin-right: 30px;
-            border: 3px solid #fff;
+            border: 3px solid #3498db;
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
         }
 
         .profile-info h1 {
-            margin: 0 0 10px 0;
+            margin: 0 0 15px 0;
             font-size: 2.5em;
+            color: #3498db;
         }
 
         .profile-info p {
-            margin: 5px 0;
+            margin: 10px 0;
             font-size: 1.1em;
         }
 
         .gallery {
-            margin-top: 50px;
-            height: 600px;
-            overflow: hidden;
-            position: relative;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
         }
 
         .gallery h2 {
             text-align: center;
-            margin: 0;
-            padding: 20px 0;
-            background-color: #000; /* 取消透明度 */
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 2;
-        }
-
-        .image-grid-container {
-            height: 100%;
-            overflow-y: auto;
-            padding-top: 60px;
-            box-sizing: border-box;
+            margin: 0 0 20px 0;
+            color: #3498db;
         }
 
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
-            padding-right: 10px;
         }
 
         .image-grid img {
             width: 100%;
-            height: 250px;
+            height: 200px;
             object-fit: cover;
             border-radius: 10px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .image-grid img:hover {
             transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
         }
 
-        /* 自定义滚动条样式 */
-        .image-grid-container::-webkit-scrollbar {
+        .chat-container {
+            width: 30%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            height: calc(100vh - 140px);
+            position: sticky;
+            top: 100px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .chat-title {
+            background-color: rgba(52, 152, 219, 0.7);
+            color: #fff;
+            padding: 10px 20px;
+            margin: -20px -20px 20px -20px;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 10px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(52, 152, 219, 0.5) rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-messages::-webkit-scrollbar {
             width: 8px;
         }
 
-        .image-grid-container::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .image-grid-container::-webkit-scrollbar-thumb {
-            background-color: rgba(255, 255, 255, 0.5);
+        .chat-messages::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
             border-radius: 4px;
         }
 
-        .image-grid-container::-webkit-scrollbar-thumb:hover {
-            background-color: rgba(255, 255, 255, 0.7);
+        .chat-messages::-webkit-scrollbar-thumb {
+            background-color: rgba(52, 152, 219, 0.5);
+            border-radius: 4px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background-color: rgba(52, 152, 219, 0.7);
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .ai-message {
+            background-color: rgba(46, 204, 113, 0.7);
+            align-self: flex-start;
+            margin-right: auto;
+        }
+
+        .chat-input {
+            display: flex;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        #user-input {
+            flex-grow: 1;
+            padding: 12px 20px;
+            border: none;
+            background-color: transparent;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        #user-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        #send-button {
+            padding: 12px 20px;
+            border: none;
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        #send-button:hover {
+            background-color: #2980b9;
         }
 
         footer {
-            background-color: #000; /* 取消透明度 */
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 20px 0;
             margin-top: 50px;
         }
@@ -150,57 +245,114 @@
             color: #fff;
             text-decoration: none;
             font-size: 24px;
+            transition: color 0.3s ease;
         }
 
-        /* 添加模态框样式 */
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.7);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .music-control:hover {
+            background: rgba(52, 152, 219, 0.9);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 1200px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .left-content, .chat-container {
+                width: 100%;
+            }
+
+            .chat-container {
+                position: static;
+                height: 500px;
+                margin-top: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-image {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .image-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            nav .container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
         .modal {
             display: none;
             position: fixed;
-            z-index: 1001;
+            z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
             background-color: rgba(0,0,0,0.9);
-            justify-content: center;
-            align-items: center;
+            overflow: hidden;
         }
 
         .modal-content {
-            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
         }
 
         .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
             color: #f1f1f1;
             font-size: 40px;
             font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
+            position: absolute;
+            right: 35px;
+            top: 15px;
             cursor: pointer;
         }
 
         #caption {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
             text-align: center;
             color: #ccc;
             padding: 10px 0;
-            height: 150px;
         }
     </style>
 </head>
@@ -211,51 +363,59 @@
         <div class="container">
             <a href="index.html">首页</a>
             <a href="resume.html">个人简历</a>
+            <a href="#" id="douyin-link">抖音</a>
+            <a href="#" id="wechat-link">微信</a>
+            <a href="https://blog.csdn.net/bhvughujb?type=blog">博客</a>
         </div>
     </nav>
 
-    <div class="container">
-        <section class="profile">
-            <img src="./img/14.jpg" alt="默认头像" class="profile-image">
-            <div class="profile-info">
-                <h1>范志东</h1>
-                <p>年龄：21</p>
-                <p>星座: 处女座</p>
-                <p>职业：前端开发工程师</p>
-                <p>邮箱: 3421517430@qq.com</p>
-                <p>地点: 河北，张家口</p>
-                <p><em>"在星空下追逐梦想"</em></p>
-            </div>
-        </section>
+    <button class="music-control" id="musicToggle">🎵</button>
 
-        <section class="gallery">
-            <h2>我的相册</h2>
-            <div class="image-grid-container">
-                <div class="image-grid">
-                    <img src="./img/1.jpg" alt="照片1" class="gallery-img">
-                    <img src="./img/2.jpg" alt="照片2" class="gallery-img">
-                    <img src="./img/3.jpg" alt="照片3" class="gallery-img">
-                    <img src="./img/4.jpg" alt="照片4" class="gallery-img">
-                    <img src="./img/5.jpg" alt="照片5" class="gallery-img">
-                    <img src="./img/6.jpg" alt="照片6" class="gallery-img">
-                    <img src="./img/7.jpg" alt="照片7" class="gallery-img">
-                    <img src="./img/8.jpg" alt="照片8" class="gallery-img">
-                    <img src="./img/9.jpg" alt="照片9" class="gallery-img">
-                    <img src="./img/10.jpg" alt="照片10" class="gallery-img">
-                    <img src="./img/11.jpg" alt="照片11" class="gallery-img">
-                    <img src="./img/12.jpg" alt="照片12" class="gallery-img">
+    <div class="main-content">
+        <div class="left-content">
+            <section class="profile">
+                <img src="./img/14.jpg" alt="默认头像" class="profile-image">
+                <div class="profile-info">
+                    <h1>范志东</h1>
+                    <p>年龄：21</p>
+                    <p>星座: 处女座</p>
+                    <p>职业：前端开发工程师</p>
+                    <p>邮箱: 3421517430@qq.com</p>
+                    <p>地点: 河北，张家口</p>
+                    <p><em>"在星空下追逐梦想"</em></p>
                 </div>
-            </div>
-        </section>
-    </div>
+            </section>
 
-    <footer>
-        <div class="social-links">
-            <a href="#" class="social-icon weibo" id="douyin-link">抖音</a>
-            <a href="#" class="social-icon wechat" id="wechat-link">微信</a>
-            <a href="https://blog.csdn.net/bhvughujb?type=blog" class="social-icon instagram">博客</a>
+            <section class="gallery">
+                <h2>我的相册</h2>
+                <div class="image-grid-container">
+                    <div class="image-grid">
+                        <img src="./img/1.jpg" alt="照片1" class="gallery-img">
+                        <img src="./img/2.jpg" alt="照片2" class="gallery-img">
+                        <img src="./img/3.jpg" alt="照片3" class="gallery-img">
+                        <img src="./img/4.jpg" alt="照片4" class="gallery-img">
+                        <img src="./img/5.jpg" alt="照片5" class="gallery-img">
+                        <img src="./img/6.jpg" alt="照片6" class="gallery-img">
+                        <img src="./img/7.jpg" alt="照片7" class="gallery-img">
+                        <img src="./img/8.jpg" alt="照片8" class="gallery-img">
+                        <img src="./img/9.jpg" alt="照片9" class="gallery-img">
+                        <img src="./img/10.jpg" alt="照片10" class="gallery-img">
+                        <img src="./img/11.jpg" alt="照片11" class="gallery-img">
+                        <img src="./img/12.jpg" alt="照片12" class="gallery-img">
+                    </div>
+                </div>
+            </section>
         </div>
-    </footer>
+
+        <div class="chat-container">
+            <h3 class="chat-title">AI 助手</h3>
+            <div class="chat-messages" id="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="输入您的问题...">
+                <button id="send-button">发送</button>
+            </div>
+        </div>
+    </div>
 
     <!-- 添加抖音二维码模态框 -->
     <div id="douyinModal" class="modal">
@@ -275,65 +435,167 @@
     <div id="imageModal" class="modal">
         <span class="close">&times;</span>
         <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
     </div>
+
+    <audio id="bgMusic" loop>
+        <source src="./mp3/814703912.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        您的浏览器不支持 audio 元素。
+    </audio>
 
     <script src="script.js"></script>
     <script>
-        // 移除主题切换相关代码
-        // document.getElementById('theme-toggle').addEventListener('click', function() {
-        //     document.body.classList.toggle('light-theme');
-        // });
-
-        // 其他现有的 JavaScript 代码保持不变
-        // ...
-
-        // 添加图片点击放大功能
+        // 首先定义所有需要的变量和函数
+        const chatMessages = document.getElementById('chat-messages');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
-        const closeBtn = document.querySelector('.close');
+        const captionText = document.getElementById('caption');
+        const closeBtn = document.querySelector('#imageModal .close');
         const galleryImages = document.querySelectorAll('.gallery-img');
+        const musicToggle = document.getElementById('musicToggle');
+        const bgMusic = document.getElementById('bgMusic');
+        let isMusicPlaying = false;
 
-        galleryImages.forEach(img => {
-            img.addEventListener('click', function() {
-                modal.style.display = "flex"; // 改为 flex 布局
-                modalImg.src = this.src;
-            });
-        });
+        function addMessage(content, isUser) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', isUser ? 'user-message' : 'ai-message');
+            messageElement.textContent = content;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
 
-        closeBtn.addEventListener('click', function() {
-            modal.style.display = "none";
-        });
+        async function sendMessage() {
+            const userMessage = userInput.value.trim();
+            if (userMessage) {
+                addMessage(userMessage, true);
+                userInput.value = '';
 
-        window.addEventListener('click', function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+                try {
+                    const response = await fetch('http://localhost:3000/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ message: userMessage })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    console.log('Received data:', data); // 添加这行来查看接收到的数据
+
+                    if (data.response) {
+                        addMessage(data.response, false);
+                    } else {
+                        throw new Error('Response is empty or undefined');
+                    }
+                } catch (error) {
+                    console.error('发送消息时出错:', error);
+                    addMessage(`抱歉，发生了错误: ${error.message}`, false);
+                }
             }
-        });
+        }
 
-        // 抖音链接点击事件
-        document.getElementById('douyin-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('douyinModal').style.display = "flex";
-        });
+        function playAudio() {
+            bgMusic.play().then(() => {
+                isMusicPlaying = true;
+                musicToggle.textContent = '🔇';
+                console.log('音乐开始播放');
+            }).catch(error => {
+                console.error('播放失败:', error);
+            });
+        }
 
-        // 微信链接点击事件
-        document.getElementById('wechat-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('wechatModal').style.display = "flex";
-        });
+        // 然后添加所有的事件监听器
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加欢迎消息
+            addMessage("你好！我是AI助手，有什么可以帮助你的吗？");
 
-        // 关闭按钮事件
-        document.querySelectorAll('.close').forEach(function(closeBtn) {
+            galleryImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    modal.style.display = "flex";
+                    modalImg.src = this.src;
+                    captionText.innerHTML = this.alt;
+                    musicToggle.style.display = 'none'; // 隐藏音乐按钮
+                });
+            });
+
             closeBtn.addEventListener('click', function() {
-                this.parentElement.style.display = "none";
+                modal.style.display = "none";
+                musicToggle.style.display = 'flex'; // 显示音乐按钮
             });
+
+            window.addEventListener('click', function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    musicToggle.style.display = 'flex'; // 显示音乐按钮
+                }
+            });
+
+            // 抖音链接点击事件
+            document.getElementById('douyin-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('douyinModal').style.display = "flex";
+            });
+
+            // 微信链接点击事件
+            document.getElementById('wechat-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('wechatModal').style.display = "flex";
+            });
+
+            // 关闭按钮事件
+            document.querySelectorAll('.close').forEach(function(closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    this.parentElement.style.display = "none";
+                });
+            });
+
+            // 点击模态框外部关闭
+            window.addEventListener('click', function(event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = "none";
+                }
+            });
+
+            musicToggle.addEventListener('click', () => {
+                if (isMusicPlaying) {
+                    bgMusic.pause();
+                    musicToggle.textContent = '🎵';
+                    console.log('音乐已暂停');
+                    isMusicPlaying = false;
+                } else {
+                    playAudio();
+                }
+            });
+
+            sendButton.addEventListener('click', () => {
+                console.log('发送按钮被点击');
+                sendMessage();
+            });
+
+            userInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    console.log('回车键被按下');
+                    sendMessage();
+                }
+            });
+
+            // 添加这些调试语句
+            console.log('sendButton:', sendButton);
+            console.log('userInput:', userInput);
         });
 
-        // 点击模态框外部关闭
-        window.addEventListener('click', function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = "none";
-            }
+        // 在页面加载完成后执行的函数
+        window.addEventListener('load', () => {
+            console.log('页面加载完成');
+            console.log('sendButton after load:', sendButton);
+            console.log('userInput after load:', userInput);
         });
     </script>
 </body>
