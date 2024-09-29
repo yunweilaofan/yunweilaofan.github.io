@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历 - 范志东</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .resume {
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 40px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .contact-info {
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
+        .section {
+            padding: 30px 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill {
+            background-color: #3498db;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .experience-item, .project-item {
+            margin-bottom: 25px;
+        }
+        h3 {
+            color: #34495e;
+            margin-bottom: 5px;
+        }
+        .date {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .education, .certificates {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .project-description {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="resume">
+            <header>
+                <h1>范志东</h1>
+                <div class="contact-info">
+                    男 | 21岁 | 18531337827 | 3421517430@qq.com<br>
+                    1年工作经验 | 求职意向：前端开发工程师 | 期望城市：北京
+                </div>
+            </header>
+
+            <div class="section">
+                <h2>个人优势</h2>
+                <ul>
+                    <li>熟练使用Vue2/Vue3全家桶(Vuex、Vue-Router...)完成项目的开发</li>
+                    <li>熟练开发各类小程序项目（原生小程序+uni-app）进行多端开发</li>
+                    <li>熟练使用element-ui，vant组件库高效完成pc端、移动端或小程序页面的开发</li>
+                    <li>熟悉使用HTML、CSS、JavaScript、ES6+语法、了解TypeScript</li>
+                    <li>熟悉git，能够熟练使用git进行代码管理</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>工作经历</h2>
+                <div class="experience-item">
+                    <h3>前端开发工程师（实习）</h3>
+                    <div class="date">2022.08 - 2022.11</div>
+                    <p><strong>工作内容：</strong></p>
+                    <ul>
+                        <li>根据产品提出的需求完成开发，并优化产品质量、性能、用户体验</li>
+                        <li>与后台工程师协作，完成数据交互、动态信息展现</li>
+                        <li>负责用户的前端体验优化，改进和优化产品前端架构，提高产品的易用性和用户体验</li>
+                        <li>日常维护项目修改BUG</li>
+                    </ul>
+                    <p><strong>实习成果：</strong></p>
+                    <ul>
+                        <li>设计响应式网页布局以适配不同大小的屏幕，并确保页面在不同设备上的稳定性和表现优秀</li>
+                        <li>使用HTML、CSS和JavaScript开发交互式页面元素，如导航菜单、轮播图等，提升用户体验和页面互动性</li>
+                        <li>优化页面加载速度和性能，减少页面加载时间，提升用户访问体验</li>
+                        <li>与后端开发人员合作，确保前后端数据交互的准确性和效率</li>
+                        <li>遵循最佳实践和前端开发标准，保持代码整洁、易于维护和扩展</li>
+                        <li>解决浏览器兼容性问题，确保网页在不同浏览器上的正确显示</li>
+                        <li>参与项目需求讨论和评审，理解产品需求，提出合理的前端解决方案</li>
+                        <li>不断学习和掌握新技术和前端开发工具，提升自身技术水平和能力</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>项目经历</h2>
+                <div class="project-item">
+                    <h3>商+新零售系统</h3>
+                    <div class="date">2024.01 - 2024.06</div>
+                    <p class="project-description">该系统是一款面向中小型公司管理人员的后台管理系统，管理人员可在此查看各岗位人员，对各岗位人员设置不同的角色，根据角色分配不同的权限等，实现高效办公。</p>
+                    <p><strong>负责模块：</strong>登录、拦截器、员工管理、角色管理、权限等模块</p>
+                    <p><strong>技术栈：</strong>Vue2、Vuex、Vue-Router、Element-UI、Echarts</p>
+                    <p><strong>项目职责：</strong></p>
+                    <ul>
+                        <li>封装头部组件，利用插槽，使不同页面的不同顶部显示</li>
+                        <li>利用递归对数据进行扁平化处理，结合Tree树形控件进行渲染</li>
+                        <li>封装图片上传组件，限制图片格式及大小，用于员工头像上传</li>
+                        <li>利用路由懒加载优化打包问题及后续维护与更新，提高页面加载速度</li>
+                        <li>利用Vuex和VueRouter的路由守卫，结合用户权限对用户可访问的动态路由筛选并合并，实现不同员工访问的页面不同</li>
+                        <li>利用Echarts组件实现数据的美化处理，便捷的展示数据，提高使用效率</li>
+                        <li>使用quill富文本编辑器对文章目录进行管理</li>
+                        <li>使用文件懒上传对各个版本进行管理及下载预览</li>
+                        <li>和后端进行接口的定义及数据的输出，梳理业务链路的逻辑流程</li>
+                    </ul>
+                </div>
+                <div class="project-item">
+                    <h3>商+新零售（小程序）</h3>
+                    <div class="date">2024.02 - 2024.04</div>
+                    <p class="project-description">一个关于提供商品搜索、商品详情、商品分类选择、购物车、下单支付、用户中心、微信一键登录的电商平台小程序。</p>
+                    <p><strong>负责模块：</strong>商品详情、购物车、商品分类选择、商品搜索</p>
+                    <p><strong>技术栈：</strong>uni-app、uView组件库、Webpack、Node.js、Vue2</p>
+                    <p><strong>项目职责：</strong></p>
+                    <ul>
+                        <li>使用uni-app进行跨终端开发</li>
+                        <li>使用uView组件库的配套方案，快速生成基础页面框架结构，提高了开发效率</li>
+                        <li>利用tabBar方法，快速配置底部标签栏的样式，按钮导航功能</li>
+                        <li>合理利用page方法，封装公用数据实现数据的联动</li>
+                        <li>使用swiper插件实现轮播图的展示</li>
+                        <li>使用图片懒加载进行优化</li>
+                        <li>实现在线支付功能</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>教育背景</h2>
+                <div class="education">
+                    <div>
+                        <h3>张家口职业技术学院</h3>
+                        <div>大专 | 软件技术</div>
+                    </div>
+                    <div class="date">2021 - 2024</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>资格证书</h2>
+                <ul>
+                    <li>全国CAD技能三级证书</li>
+                    <li>鸿蒙开发者证书</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="about.html">返回关于我</a>
+    </footer>
+</body>
+</html>

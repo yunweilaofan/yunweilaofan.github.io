@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 - 星空数字名片</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            background-color: #000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #000; /* 取消透明度 */
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-top: 100px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 30px;
+            border: 3px solid #fff;
+        }
+
+        .profile-info h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+        }
+
+        .profile-info p {
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+
+        .gallery {
+            margin-top: 50px;
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery h2 {
+            text-align: center;
+            margin: 0;
+            padding: 20px 0;
+            background-color: #000; /* 取消透明度 */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2;
+        }
+
+        .image-grid-container {
+            height: 100%;
+            overflow-y: auto;
+            padding-top: 60px;
+            box-sizing: border-box;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding-right: 10px;
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .image-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        /* 自定义滚动条样式 */
+        .image-grid-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .image-grid-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .image-grid-container::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 4px;
+        }
+
+        .image-grid-container::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        footer {
+            background-color: #000; /* 取消透明度 */
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        /* 添加模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div id="stars-container"></div>
+
+    <nav>
+        <div class="container">
+            <a href="index.html">首页</a>
+            <a href="resume.html">个人简历</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="profile">
+            <img src="./img/14.jpg" alt="默认头像" class="profile-image">
+            <div class="profile-info">
+                <h1>范志东</h1>
+                <p>年龄：21</p>
+                <p>星座: 处女座</p>
+                <p>职业：前端开发工程师</p>
+                <p>邮箱: 3421517430@qq.com</p>
+                <p>地点: 河北，张家口</p>
+                <p><em>"在星空下追逐梦想"</em></p>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>我的相册</h2>
+            <div class="image-grid-container">
+                <div class="image-grid">
+                    <img src="./img/1.jpg" alt="照片1" class="gallery-img">
+                    <img src="./img/2.jpg" alt="照片2" class="gallery-img">
+                    <img src="./img/3.jpg" alt="照片3" class="gallery-img">
+                    <img src="./img/4.jpg" alt="照片4" class="gallery-img">
+                    <img src="./img/5.jpg" alt="照片5" class="gallery-img">
+                    <img src="./img/6.jpg" alt="照片6" class="gallery-img">
+                    <img src="./img/7.jpg" alt="照片7" class="gallery-img">
+                    <img src="./img/8.jpg" alt="照片8" class="gallery-img">
+                    <img src="./img/9.jpg" alt="照片9" class="gallery-img">
+                    <img src="./img/10.jpg" alt="照片10" class="gallery-img">
+                    <img src="./img/11.jpg" alt="照片11" class="gallery-img">
+                    <img src="./img/12.jpg" alt="照片12" class="gallery-img">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" class="social-icon weibo" id="douyin-link">抖音</a>
+            <a href="#" class="social-icon wechat" id="wechat-link">微信</a>
+            <a href="https://blog.csdn.net/bhvughujb?type=blog" class="social-icon instagram">博客</a>
+        </div>
+    </footer>
+
+    <!-- 添加抖音二维码模态框 -->
+    <div id="douyinModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="douyinQR" src="./img/15.jpg" alt="抖音二维码">
+        <div id="caption">扫描二维码关注我的抖音</div>
+    </div>
+
+    <!-- 添加微信二维码模态框 -->
+    <div id="wechatModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="wechatQR" src="./img/13.jpg" alt="微信二维码">
+        <div id="caption">扫描二维码添加我的微信</div>
+    </div>
+
+    <!-- 添加图片模态框 -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // 移除主题切换相关代码
+        // document.getElementById('theme-toggle').addEventListener('click', function() {
+        //     document.body.classList.toggle('light-theme');
+        // });
+
+        // 其他现有的 JavaScript 代码保持不变
+        // ...
+
+        // 添加图片点击放大功能
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.close');
+        const galleryImages = document.querySelectorAll('.gallery-img');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = "flex"; // 改为 flex 布局
+                modalImg.src = this.src;
+            });
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        // 抖音链接点击事件
+        document.getElementById('douyin-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('douyinModal').style.display = "flex";
+        });
+
+        // 微信链接点击事件
+        document.getElementById('wechat-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('wechatModal').style.display = "flex";
+        });
+
+        // 关闭按钮事件
+        document.querySelectorAll('.close').forEach(function(closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                this.parentElement.style.display = "none";
+            });
+        });
+
+        // 点击模态框外部关闭
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
