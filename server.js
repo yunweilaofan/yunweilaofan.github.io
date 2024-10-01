@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-    origin: '*', // 允许所有来源，仅用于开发环境
+    origin: process.env.ALLOWED_ORIGIN || '*', // 使用环境变量或保持允许所有来源
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -42,6 +42,7 @@ app.post('/chat', async (req, res) => {
         const accessToken = await getAccessToken();
         const apiUrl = 'https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/eb-instant';
         
+        console.log('Sending request to Baidu API');
         const response = await fetch(`${apiUrl}?access_token=${accessToken}`, {
             method: 'POST',
             headers: {
@@ -52,8 +53,11 @@ app.post('/chat', async (req, res) => {
             })
         });
 
+        console.log('Baidu API response status:', response.status);
         if (!response.ok) {
-            throw new Error(`API responded with status ${response.status}`);
+            const errorText = await response.text();
+            console.error('Baidu API error response:', errorText);
+            throw new Error(`API responded with status ${response.status}: ${errorText}`);
         }
 
         const data = await response.json();
@@ -69,10 +73,10 @@ app.post('/chat', async (req, res) => {
 
         res.json({ response: data.result });
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error in /chat route:', error);
         res.status(500).json({ error: 'An error occurred', details: error.message });
     }
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));

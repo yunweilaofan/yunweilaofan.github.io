@@ -92,6 +92,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // 获取服务器地址
+    const SERVER_URL = 'http://192.168.31.83:3000';
+
     // 星空背景代码（保持不变）
     function createStars() {
         console.log("Creating stars..."); // 调试信息
@@ -132,4 +135,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     createStars();
     animateStars();
+
+    async function sendMessage() {
+        const messageInput = document.getElementById('message-input');
+        const message = messageInput.value.trim();
+        if (message) {
+            appendMessage('user', message);
+            messageInput.value = '';
+
+            try {
+                const response = await fetch(`${SERVER_URL}/chat`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message }),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                appendMessage('bot', data.response);
+            } catch (error) {
+                console.error('Error:', error);
+                appendMessage('error', 'An error occurred while sending the message.');
+            }
+        }
+    }
 });
