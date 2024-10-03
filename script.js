@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 获取服务器地址
-    const SERVER_URL = 'http://192.168.31.83:3000';
+    const SERVER_URL = 'http://192.168.2.5:3000';
 
     // 星空背景代码（保持不变）
     function createStars() {

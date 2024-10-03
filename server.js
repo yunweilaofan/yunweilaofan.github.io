@@ -7,9 +7,9 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-    origin: process.env.ALLOWED_ORIGIN || '*', // 使用环境变量或保持允许所有来源
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    origin: '*', // 在开发环境中允许所有来源
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type']
 }));
 app.use(express.json());
 
